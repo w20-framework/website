@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body style="background-color: white;">
+{{ partial "initial-scripts.html" . }}
+<div id="header">
+{{ partial "top-menu.html" . }}
+</div>
+<div class="title-header big">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>W20</h1>
+                <p class="bigger">Enterprise-class Web framework</p>
+                <div class="quick-start hidden-xs">
+                    <p>Create your first project in seconds...</p>
+                    <ul class="quick-paste">
+                        <li class="unix"><span>yo w20</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="title-subheader">
+    <div class="container">
+        <ul>
+            <li class="homepage-subheader-link first-link">
+                <h3><i class="fa fa-stack-overflow"></i> <a target="_blank" href="https://stackoverflow.com/questions/tagged/w20">Stack Overflow</a></h3>
+            </li>
+            <li class="homepage-subheader-link">
+                <h3><i class="fa fa-github"></i> <a target="_blank" href="https://github.com/w20-framework">GitHub</a></h3>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="content-md" style="padding-bottom: 0;">
+    <div class="container">
+        <div class="headline-center margin-bottom-60">
+            <h2>Create composable, feature-rich Web applications</h2>
+            <p>
+                W20 framework is built on top of popular front-end technologies: <strong>AngularJS</strong>, <strong>Bootstrap</strong> and <strong>RequireJS</strong>.
+                <br/>
+                It provides the ability to create reusable frontend fragments and assemble them dynamically into a full-blown application.
+                <br/>
+                On top of that, W20 comes with various services like navigation, security, i18n or hypermedia to create enterprise-level Web front-ends.
+            </p>
+        </div>
+        <div class="row margin-bottom-40">
+            <div class="col-md-5 col-md-offset-1">
+                <div class="content-boxes-v5 md-margin-bottom-30">
+                    <i class="rounded-x fa fa-puzzle-piece icon-bg-u" style="color: white;"></i>
+                    <div class="overflow-h">
+                        <h3 class="no-top-space">Compose applications</h3>
+                        <p class="margin-bottom-40">
+                            Create reusable application fragments and compose them at will in multiple
+                            applications.
+                        </p>
+                    </div>
+                </div>
+                <div class="content-boxes-v5 md-margin-bottom-30">
+                    <i class="rounded-x fa fa-paint-brush icon-bg-darker"></i>
+                    <div class="overflow-h">
+                        <h3 class="no-top-space">Leverage UI themes</h3>
+                        <p>
+                            Apply one of the built-in themes or create your own reusable theme as a W20 fragment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+                <div class="content-boxes-v5 md-margin-bottom-30">
+                    <i class="rounded-x fa fa-rocket icon-bg-darker"></i>
+                    <div class="overflow-h">
+                        <h3 class="no-top-space">Use built-in services</h3>
+                        <p class="margin-bottom-40">
+                            Navigation, internationalization (i18n), advanced security, hypermedia client...
+                            Everything to make your life easier.
+                        </p>
+                    </div>
+                </div>
+                <div class="content-boxes-v5 md-margin-bottom-30">
+                    <i class="rounded-x fa fa-cubes icon-bg-u" style="color: white;"></i>
+                    <div class="overflow-h">
+                        <h3 class="no-top-space">Add-ons</h3>
+                        <p class="margin-bottom-40">
+                            Tap into the add-on library to expand W20 capabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-grey content-sm">
+        <div class="container">
+            <div class="headline-center">
+                <h2>Contributing</h2>
+                <p class="space-lg-hor">W20 is Open-Source Software so you can contribute yourself to make it better. Code contributions are welcome but there is a lot more you can do to help:
+                documentation fixes and improvements, issue reporting, feature suggestions, ...</p>
+                <p>We would love to hear back from you!</p><br>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-center md-margin-bottom-20">
+                    <a href="//github.com/w20-framework" class="btn-u btn-brd btn-brd-hover btn-u-dark">Explore the repositories</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    {{ partial "footer.html" . }}
+</div>
+
+{{ partial "modals.html" . }}
+{{ partial "styles.html" . }}
+{{ partial "scripts.html" . }}
+
+</body>
+</html>

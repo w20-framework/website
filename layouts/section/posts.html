@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{ partial "head.html" . }}
+</head>
+<body>
+{{ partial "initial-scripts.html" . }}
+{{ $paginator := .Paginator }}
+<div id="header">
+    {{ partial "top-menu.html" . }}
+    {{ partial "blog-header.html" . }}
+    <div class="title-subheader">
+        <div class="container">
+            <ul>
+                <li><h3 class="active"><i class="fa fa-list"></i> <a href="/posts">All posts</a></h3></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="row">
+        <div class="col-md-9">
+            {{ $.Scratch.Set "postCount" 0 }}
+            {{ range .Data.Pages }}
+            {{ $.Scratch.Set "postCount" (add ($.Scratch.Get "postCount") 1) }}
+            <div class="content-wrapper filterable-item" style="margin-bottom: 20px;">
+                <div class="doc-content">
+                    {{ .Render "summary" }}
+                </div>
+            </div>
+            {{ end }}
+
+            <div class="text-left">
+                {{ template "_internal/pagination.html" . }}
+            </div>
+        </div>
+        <div class="col-md-3 filter-column">
+            <form id="criteria">
+                <h4 class="filter-column-header">{{ $.Scratch.Get "postCount" }} post(s)</h4>
+                <h4>Filter</h4>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="filter" placeholder="Enter filtering terms here...">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{ partial "filter-script.html" }}
+<div id="footer">
+    {{ partial "footer.html" . }}
+</div>
+{{ partial "modals.html" . }}
+{{ partial "styles.html" . }}
+{{ partial "scripts.html" . }}
+</body>
+</html>

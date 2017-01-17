@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body>
+{{ partial "initial-scripts.html" . }}
+<div id="header">
+    {{ partial "top-menu.html" . }}
+    {{ partial "addons-header.html" . }}
+    <div class="title-subheader">
+        <div class="container">
+            <ul>
+                <li><h3 class="active"><i class="fa fa-list"></i> <a href="/addons">All add-ons</a></h3></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="callout callout-info" style="margin-top: 0;">
+                <div style="display:table; width: 100%">
+                    <div style="display:table-cell; width: 50px; vertical-align: middle;">
+                        <i class="fa fa-plug icon-2x" style="line-height: 30px;"></i>
+                    </div>
+                    <div style="display:table-cell; vertical-align: middle;">
+                        Want your W20 add-on listed here ? Follow <a
+                            href="https://github.com/w20-framework/w20/wiki/Register-an-add-on">this
+                        guide</a>.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9 addon-items">
+            {{ $.Scratch.Set "addonCount" 0 }}
+            {{ $addons := (where .Data.Pages.ByDate.Reverse "Weight" -1) }}
+            <div class="row">
+            {{ range $index, $element := $addons }}
+            {{ $.Scratch.Set "addonCount" (add ($.Scratch.Get "addonCount") 1) }}
+            {{ if eq (mod $index 2) 0 }}
+                <div class="col-md-6 filterable-item" style="margin-bottom: 20px;">
+                    <div class="item-wrapper">
+                        {{ .Render "summary" }}
+                    </div>
+                </div>
+            {{ else }}
+                <div class="col-md-6 filterable-item" style="margin-bottom: 20px;">
+                    <div class="item-wrapper">
+                        {{ .Render "summary" }}
+                    </div>
+                </div>
+            {{ end }}
+                {{ if eq $index (sub (len $addons) 1) }}
+                </div>
+                {{ end }}
+            
+            {{ end }}
+        </div>
+        <div class="col-md-3 filter-column">
+            <form id="criteria">
+                <h4 class="filter-column-header">{{ $.Scratch.Get "addonCount" }} add-on(s)</h4>
+                <h4>Filter</h4>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="filter" placeholder="Enter filtering terms here...">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{ partial "filter-script.html" }}
+<div id="footer">
+    {{ partial "footer.html" . }}
+</div>
+{{ partial "modals.html" . }}
+{{ partial "styles.html" . }}
+{{ partial "scripts.html" . }}
+</body>
+</html>

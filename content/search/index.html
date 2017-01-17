@@ -1,0 +1,104 @@
+---
+title: "Results"
+type: "home"
+layout: "plain"
+zones:
+- "Search"
+sections:
+- "SearchResults"
+---
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="content-wrapper">
+            <div class="inner-results">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 filter-column">
+        <h4 class="filter-column-header">Showing 50 first results of <span id="result-count"></span></h4>
+    </div>
+</div>
+<script>
+    document.addEventListener('w20', function () {
+        var $inner = $('.inner-results'),
+                query = w20.strings.parseQueryString(location);
+
+        function displaySearchAgain(currentQuery) {
+            $inner.append(
+                    '<form method="GET" action="/search">' +
+                    '<div class="input-group animated fadeInDown">' +
+                    '<input id="search-again-field" type="text" class="form-control" placeholder="Search again" name="q">' +
+                    '<span class="input-group-btn">' +
+                    '<button class="btn-u" type="submit">Go</button>' +
+                    '</span>' +
+                    '</div>' +
+                    '</form>' +
+                    '<br>'
+            );
+            $('#search-again-field').focus().val(currentQuery);
+        }
+
+        function displayMessage(message) {
+            $inner.append('<h3>' + message + '</h3>');
+        }
+
+        if (!(query.q) || query.q.length < 1 || query.q[0] === "") {
+            displayMessage('No query specified.');
+            displaySearchAgain("");
+            return;
+        }
+
+        w20.searchService.search(query.q[0], function (results) {
+            if (!results.length) {
+                displayMessage('No search results.');
+                displaySearchAgain("");
+            } else {
+                $('.title-subheader h3 > a').text('Most relevant results for « ' + query.q + ' »');
+                displaySearchAgain(query.q);
+
+                // compute highlight params
+                var highlight = '';
+                query.q[0].replace(/[^\w\s]/g, '').split(' ').forEach(function (term) {
+                    highlight += encodeURIComponent(term) + '&h='
+                });
+                if (highlight) {
+                    highlight = highlight.substring(0, highlight.length - 3);
+                }
+
+                // Only show the ten first results
+                results.slice(0, 50).forEach(function (result) {
+                    var sectionHref = result.zone.path + '/' + result.section.path,
+                        highlightParams = highlight ? '?h=' + highlight + '&scroll' : '';
+
+                    if (sectionHref.lastIndexOf("/") !== sectionHref.length - 1) {
+                        sectionHref += "/";
+                    }
+
+                    $('.inner-results').append(
+                            '<h3><img src="/img/logos/' + result.zone.logo + '">' +
+                            (result.section.label ? ' <a href="' + sectionHref + highlightParams + '">' + result.section.label + '</a>' : '') +
+                            (result.href !== sectionHref ? ((result.section.label ? ' <i class="fa fa-caret-right"></i>' : '') + ' <a href="' + result.href + highlightParams + '">' + result.title + '</a>') : '') +
+                            '</h3>' +
+                            '<ul class="list-inline up-ul">' +
+                            '<li>' +
+                            'In <a href="' + result.zone.path + '">' + result.zone.label + '</a>' +
+                            '</li>' +
+                            '</ul>' +
+                            '<p>' + result.summary + '</p>' +
+                            '<div class="tags">' +
+                            (result.tags ? result.tags.map(function (tag) {
+                                return '<a class="label label-default" href="/tags/' + tag.replace(/ /g, '-') + '">' + w20.strings.toTitleCase(tag) + '</a></span>';
+                            }).join(" ") : '') +
+                            '</div>' +
+                            '<hr>'
+                    );
+                });
+
+                $('#result-count').text(results.length);
+            }
+        }, function () {
+            displayMessage('An error occurred during search, please try again later.');
+        });
+    });
+</script>

@@ -1,0 +1,63 @@
+{{ $parent := . }}
+<div class="side-menu">
+    {{ range .Menus }}
+        {{ if gt (len (index $parent.Site.Menus .Menu)) 1 }}
+        <div class="list-group">
+            <ul class="nav">
+                {{ $toc := $parent.TableOfContents }}
+                {{ $currentUrl := $parent.RelPermalink }}
+                {{ range index $parent.Site.Menus .Menu }}
+                    {{ $active :=  eq $currentUrl .URL }}
+                    <li>
+                        <a href="{{ .URL }}" class="list-group-item {{ if $active }} active {{ end }}">
+                            {{ .Name }}
+                        </a>
+                        {{ if $parent.Scratch.Get "nextPage" }}
+                            <script>
+                                w20.state.nextPage = '{{ .URL }}';
+                            </script>
+                            {{ $parent.Scratch.Set "nextPage" false }}
+                        {{ end }}
+                        {{ if $active }}
+                            {{ $toc }}
+                            <script>
+                                w20.state.previousPage = '{{ $parent.Scratch.Get "previousPage" }}';
+                            </script>
+                            {{ $parent.Scratch.Set "nextPage" true }}
+                        {{ end }}
+                    </li>
+                    {{ $parent.Scratch.Set "previousPage" .URL }}
+                {{ end }}
+            </ul>
+        </div>
+        {{ end }}
+    {{ end }}
+    {{ if $parent.Params.tags }}
+    <div class="list-group">
+        <ul class="nav">
+            <li class="list-group-item"><div style="margin-bottom: 10px;"><i class="fa fa-tag"></i> Tags</div>
+                <div class="tags">
+                    {{ range $parent.Params.tags }}
+                    <a class="label label-default" href="/tags/{{ . | urlize }}">{{ . | title }}</a>
+                    {{ end }}
+                </div>
+            </li>
+        </ul>
+    </div>
+    {{ end }}
+    <div class="list-group">
+        <ul class="nav">
+            {{ if in .Dir "addons" }}
+                {{ if isset $parent.Params "repo" }}
+                    {{with $parent.File }}<li><a class="list-group-item" href='{{ $path := split (replace .Dir "\\" "/") "/" }}{{ $parent.Params.repo }}/edit/docs/{{ range $index, $element := $path }}{{ if and (gt $index 1) (gt (len $element) 0) }}{{ $element }}/{{ end }}{{ end }}{{ html .LogicalName }}' target="_blank"><i class="fa fa-edit"></i> Contribute to this add-on page</a></li>{{end}}
+                {{ end }}
+            {{ else if in .Dir "themes" }}
+                {{ if isset $parent.Params "repo" }}
+                    {{with $parent.File }}<li><a class="list-group-item" href='{{ $path := split (replace .Dir "\\" "/") "/" }}{{ $parent.Params.repo }}/edit/docs/{{ range $index, $element := $path }}{{ if and (gt $index 1) (gt (len $element) 0) }}{{ $element }}/{{ end }}{{ end }}{{ html .LogicalName }}' target="_blank"><i class="fa fa-edit"></i> Contribute to this theme page</a></li>{{end}}
+                {{ end }}
+            {{ else }}
+                {{with $parent.File }}<li><a class="list-group-item" href="https://github.com/w20-framework/website/edit/master/content/{{ html .Dir }}{{ html .LogicalName }}" target="_blank"><i class="fa fa-edit"></i> Contribute to this page</a></li>{{end}}
+            {{ end }}
+        </ul>
+    </div>
+</div>

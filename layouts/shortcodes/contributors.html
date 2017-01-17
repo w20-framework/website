@@ -1,0 +1,10 @@
+<ul>
+    {{ range $i, $r := getCSV "\n" "https://raw.githubusercontent.com/w20-framework/w20/master/CONTRIBUTORS" }}
+        {{ $line := index $r 0 }}
+        {{ if $line }}
+            {{ if not (eq (slicestr $line 0 1) "#") }}
+                <li class="list-unstyled">{{ index (split $line "<") 0 }}</li>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</ul>

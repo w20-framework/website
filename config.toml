@@ -1,0 +1,104 @@
+baseurl = "http://w20-framework.github.io/"
+MetaDataFormat = "yaml"
+
+[params]
+  description = "Documentation of W20 framework."
+  author = "The W20 authors"
+
+[blackfriday]
+  angledQuotes = true
+  plainIdAnchors = true
+
+[taxonomies]
+  tag = "tags"
+  author = "authors"
+  zone = "zones"
+  section = "sections"
+
+#####################################
+#### Website zones               ####
+#####################################
+
+[params.zone.Documentation]
+  path = "/docs"
+  label = "Documentation"
+  logo = "w20-logo.svg"
+
+[params.zone.Guides]
+  path = "/guides"
+  label = "Guides"
+  logo = "guides-logo.svg"
+
+[params.zone.Project]
+  path = "/project"
+  label = "Project"
+  logo = "project-logo.svg"
+
+[params.zone.Posts]
+  path = "/posts"
+  label = "Posts"
+  logo = "blog-logo.svg"
+
+[params.zone.Addons]
+  path = "/addons"
+  label = "Add-ons"
+  logo = "addons-logo.svg"
+
+[params.zone.Themes]
+  path = "/themes"
+  label = "Themes"
+  logo = "themes-logo.svg"
+
+[params.zone.Search]
+  path = "/search"
+  label = "Search"
+  logo = "search-logo.svg"
+
+#####################################
+#### Project sections           ####
+#####################################
+
+[params.section.ProjectOverview]
+  label = "Overview"
+  icon = "fa fa-file-text"
+  path = ""
+
+[params.section.ProjectCommunity]
+  label = "Community"
+  icon = "fa fa-community"
+  path = "community"
+
+[params.section.ProjectFAQ]
+  label = "FAQ"
+  icon = "fa fa-comments-o"
+  path = "faq"
+
+[params.section.ProjectRoadmap]
+  label = "Roadmap"
+  icon = "fa fa-road"
+  path = "roadmap"
+    
+
+#####################################
+#### Documentation sections      ####
+#####################################
+
+[params.section.W20Introduction]
+  label = "Introduction"
+  icon = "fa fa-play-circle"
+  path = ""
+
+[params.section.W20Manual]
+  label = "W20 manual"
+  icon = "fa fa-book"
+  path = "manual"
+
+#####################################
+#### Search                      ####
+#####################################
+
+[params.section.SearchResults]
+  label = "Search results"
+  icon = "fa fa-search"
+  path = ""
+

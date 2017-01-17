@@ -1,0 +1,24 @@
+{{ $zone := index .Params.zones 0 }}
+<article class="inner-results">
+    <h1><img src='/img/logos/{{ index .Site.Params.zone $zone "logo" }}'>
+        {{ if eq $zone "Addons" }}
+            {{ $.Scratch.Set "href" (delimit (first 5 (split .Permalink "/")) "/") }}
+            <a href='{{ $.Scratch.Get "href" }}'>{{ .Params.name }}</a>
+        {{ end }}
+        {{ if ne (printf "%s/" ($.Scratch.Get "href")) (.Permalink) }}
+            {{ if $.Scratch.Get "href" }}
+            <i class="fa fa-caret-right"></i>
+            {{ end }}
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }}
+    </h1>
+    <ul class="list-inline up-ul">
+        <li>
+            In <a href='{{ index .Site.Params.zone $zone "path" }}'>{{ index .Site.Params.zone $zone "label" }}</a>
+        </li>
+    </ul>
+    <p>{{ .Summary }}...</p>
+    <div class="tags">
+        {{ range .Params.tags }}<a class="label label-default" href="/tags/{{ . | urlize }}">{{ . | title }}</a> {{ end }}</span>
+    </div>
+</article>
