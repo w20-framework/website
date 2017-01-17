@@ -12,25 +12,25 @@
 	branch = docs
 [submodule "content/addons/dataviz"]
 	path = content/addons/dataviz
-	url = http://github.com/w20-framework/w20-dataviz.git
+	url = https://github.com/w20-framework/w20-dataviz.git
 	branch = docs
 [submodule "content/addons/components"]
 	path = content/addons/components
-	url = http://github.com/w20-framework/w20-components.git
+	url = https://github.com/w20-framework/w20-components.git
 	branch = docs
 [submodule "content/addons/extras"]
 	path = content/addons/extras
-	url = http://github.com/w20-framework/w20-extras.git
+	url = https://github.com/w20-framework/w20-extras.git
 	branch = docs
 [submodule "content/addons/material"]
 	path = content/addons/material
-	url = http://github.com/w20-framework/w20-material.git
+	url = https://github.com/w20-framework/w20-material.git
 	branch = docs
 [submodule "content/addons/bootstrap-3"]
 	path = content/addons/bootstrap-3
-	url = http://github.com/w20-framework/w20-bootstrap-3.git
+	url = https://github.com/w20-framework/w20-bootstrap-3.git
 	branch = docs
 [submodule "content/addons/bootstrap-2"]
 	path = content/addons/bootstrap-2
-	url = http://github.com/w20-framework/w20-bootstrap-2.git
+	url = https://github.com/w20-framework/w20-bootstrap-2.git
 	branch = docs
