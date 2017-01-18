@@ -12,7 +12,7 @@
 
 .side-menu #TableOfContents {
     list-style-type: none;
-    background-color: rgba(52, 152, 219, 0.2);
+    background-color: rgba(199, 83, 66, 0.2);
     padding: 20px 10px 20px 10px;
 }
 
@@ -38,12 +38,12 @@
 }
 
 .side-menu > .title > a {
-    background-color: #3498db;
+    background-color: #c0392b;
     vertical-align: top;
 }
 
 .side-menu > .label {
-    background-color: #3498db;
+    background-color: #c0392b;
     font-family: 'Open Sans', 'Helvetica', sans-serif;
 }
 
@@ -63,13 +63,13 @@
 }
 
 .side-menu a.list-group-item.active {
-    background-color: #3498db;
-    border-color: #3498db;
+    background-color: #c0392b;
+    border-color: #c0392b;
 }
 
 .side-menu a.list-group-item.active:hover {
-    background-color: #3498db;
-    border-color: #3498db;
+    background-color: #c0392b;
+    border-color: #c0392b;
 }
 
 .side-menu ul#tags {

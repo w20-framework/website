@@ -5,7 +5,7 @@
 .title-header {
     height: 180px;
     overflow: hidden;
-    background: #3498db url('../img/bg-pattern.png') repeat left top;
+    background: #95a5a6 url('../img/bg-pattern.png') repeat left top;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), 0 -2px 1px #b3c5f0;
 }
 
@@ -32,20 +32,20 @@
 }
 
 .title-header h1 {
-    margin: 30px 15px 15px 0;
-    font-family: 'Bitter', sans-serif;
-    font-weight: normal;
+    margin: 50px 15px 15px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 30px;
     color: #f9f9f9;
-    line-height: 70px;
     padding: 0;
-    font-size: 70px;
     font-style: normal;
     text-shadow: 1px 1px 1px #555;
 }
 
 .title-header h2 {
     margin: 30px 15px 15px 0;
-    font-family: 'Bitter', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     color: #f9f9f9;
     line-height: 40px;
@@ -54,6 +54,7 @@
     font-style: normal;
     text-shadow: 1px 1px 1px #555;
 }
+
 
 .title-header p {
     font-family: 'Open Sans', sans-serif;
@@ -79,7 +80,7 @@
 
 .title-subheader {
     padding: 0 20px 0 20px;
-    background-color: #275d91;
+    background-color: #c0392b;
     min-height: 40px;
 }
 
@@ -137,7 +138,7 @@
 }
 
 .quick-start .quick-paste {
-    background-color: rgba(57, 172, 247, 0.5);
+    background-color: rgba(255, 255, 255, 0.2);
     padding: 10px;
     line-height: 21px;
     font-size: 18px;
@@ -154,18 +155,16 @@
     -moz-user-select: text;
     -ms-user-select: text;
     -webkit-user-select: text;
-    color: white;
+    color: #475152;
+    font-weight: bold;
 }
 
 .quick-start .quick-paste > li.unix::before {
     content: '$ ';
-    color: white;
+    color: #475152;
+    font-weight: bold;
 }
 
-.quick-start .quick-paste > li.windows::before {
-    content: '> ';
-    color: white;
-}
 
 .btn-u.btn-u-download-win {
     background: #498819;
@@ -210,14 +209,6 @@
     height: 180px;
 }
 
-.bg-parallax {
-    width: 100%;
-    height: auto;
-    padding: 50px 0;
-    position: relative;
-    background: #89c758 url('../img/bg-pattern.png') repeat fixed;
-}
-
 kbd {
     display: inline-block;
     padding: 5px 5px;
@@ -237,23 +228,12 @@ kbd {
 }
 
 .homepage-subheader-link {
-    float: right;
     vertical-align: top;
 }
 
 .channel-marker {
     z-index: 9999;
     overflow: hidden;
-}
-
-.channel-marker.beta {
-    background-color: #3f66ff;
-    color: #fff;
-}
-
-.channel-marker.dev {
-    background-color: #ff2437;
-    color: #fff;
 }
 
 .channel-marker span {
