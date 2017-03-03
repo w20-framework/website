@@ -15,7 +15,7 @@ To create a W20 application, run the following command:
 
 ```plain
 npm install -g yo bower grunt-cli gulp generator-w20
- yo w20
+yo w20
 ```
 
 {{% callout info %}}

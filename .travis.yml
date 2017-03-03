@@ -9,22 +9,21 @@ git:
 
 cache:
   directories:
-    - hugo_0.17_linux_amd64
     - node_modules
   
 before_install:
   - git submodule update --init --recursive --remote
 
 install:
-  - wget https://github.com/spf13/hugo/releases/download/v0.17/hugo_0.17_Linux-64bit.tar.gz
-  - tar xzvf hugo_0.17_Linux-64bit.tar.gz
-  - chmod +x hugo_0.17_linux_amd64/hugo_0.17_linux_amd64
+  - wget https://github.com/spf13/hugo/releases/download/v0.18.1/hugo_0.18.1_Linux-64bit.tar.gz
+  - tar xzvf hugo_0.18.1_Linux-64bit.tar.gz
+  - chmod +x hugo_0.18.1_linux_amd64/hugo_0.18.1_linux_amd64
   - npm install
 
 script:
   - chmod +x deploy_ghpages.sh
   - grunt lunr-index
-  - if [ $TRAVIS_BRANCH = master ]; then ./hugo_0.17_linux_amd64/hugo_0.17_linux_amd64; fi
+  - if [ $TRAVIS_BRANCH = master ]; then ./hugo_0.18.1_linux_amd64/hugo_0.18.1_linux_amd64; fi
 
 after_success:
   - if [ $TRAVIS_PULL_REQUEST = false ] && [ $TRAVIS_BRANCH = master ]; then ./deploy_ghpages.sh && (curl http://www.google.com/webmasters/tools/ping?sitemap=http%3A%2F%2Fw20-framework.github.io%2Fsitemap.xml > /dev/null || :); fi
