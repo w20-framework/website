@@ -9,6 +9,6 @@
     "string": "~3.2",
     "natural": "~0.2",
     "markdown": "~0.5",
-    "lodash": "~4.11"
+    "lodash": "~4.17"
   }
 }
